@@ -1,6 +1,4 @@
 
-
-set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -54,7 +52,7 @@ filetype plugin indent on    " required
 
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
 
-" filetype on
+filetype on
 syntax on
 colorscheme monokai
 set t_Co=256 
