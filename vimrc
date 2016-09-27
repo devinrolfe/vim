@@ -1,3 +1,4 @@
+B
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -30,16 +31,6 @@ noremap <Leader>r :CommandTFlush<CR>
 
 set laststatus=2
 
-" Nerd Tree
-let NERDTreeMapActivateNode='<right>'
-let NERDTreeShowHidden=1
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>j :NERDTreeFind<CR>
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-
-
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
 
 " filetype on
@@ -52,7 +43,6 @@ set guifont=Menlo\ Regular:h20
 set colorcolumn=90
 highlight ColorColumn guibg=Red
 set number
-
 let mapleader=" "
 
 map <leader>s :source ~/.vimrc<CR>
