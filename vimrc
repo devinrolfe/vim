@@ -1,5 +1,4 @@
 
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,29 +8,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+Plugin 'wincent/command-t'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdtree'
 
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -46,7 +27,19 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set wildignore+=*.log,*.sql,*.cache
+noremap <Leader>r :CommandTFlush<CR>
 
+set laststatus=2
+
+" Nerd Tree
+let NERDTreeMapActivateNode='<right>'
+let NERDTreeShowHidden=1
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>j :NERDTreeFind<CR>
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 
 
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
@@ -56,9 +49,10 @@ syntax on
 colorscheme monokai
 set t_Co=256 
 
-set guifont=Menlo\ Regular:h18
+set guifont=Menlo\ Regular:h20
 
 set colorcolumn=90
+highlight ColorColumn guibg=Red
 set number
 
 let mapleader=" "
@@ -85,5 +79,24 @@ nnoremap <Leader><Leader> :e#<CR>
  
 set showmatch
 
+" NerdCommenter stuff
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
 
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
